@@ -5,6 +5,10 @@ class MyAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(title: Text('Psylethia'));
+    return AppBar(
+      title: Text('Psylethia'),
+      leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
+      backgroundColor: Color(0xFFA376A2),
+    );
   }
 }
