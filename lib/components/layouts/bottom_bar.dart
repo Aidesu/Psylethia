@@ -11,7 +11,7 @@ class BottomBar extends StatelessWidget {
       items: [
         BottomNavigationBarItem(
           icon: IconButton(
-            onPressed: () {},
+            onPressed: () => Navigator.pushNamed(context, '/home'),
             icon: Icon(Icons.home_outlined, color: Colors.black),
             iconSize: 35,
           ),
@@ -19,7 +19,7 @@ class BottomBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: IconButton(
-            onPressed: () {},
+            onPressed: () => Navigator.pushNamed(context, '/profile'),
             icon: Icon(Icons.person_3_outlined, color: Colors.black),
             iconSize: 35,
           ),
@@ -27,7 +27,7 @@ class BottomBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: IconButton(
-            onPressed: () {},
+            onPressed: () => Navigator.pushNamed(context, '/cart'),
             icon: Icon(Icons.shopping_cart_outlined, color: Colors.black),
             iconSize: 35,
           ),
@@ -35,7 +35,7 @@ class BottomBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: IconButton(
-            onPressed: () {},
+            onPressed: () => Navigator.pushNamed(context, '/category'),
             icon: Icon(Icons.menu, color: Colors.black),
             iconSize: 35,
           ),

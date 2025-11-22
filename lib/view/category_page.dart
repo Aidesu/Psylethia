@@ -8,8 +8,7 @@ class CategoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(''),
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
+        title: Text('Psylethia'),
         backgroundColor: Color(0xFFA376A2),
       ),
       bottomNavigationBar: BottomBar(),

@@ -27,7 +27,10 @@ class ProductsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('${testProduct['name']}'),
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: Icon(Icons.arrow_back),
+        ),
         backgroundColor: Color(0xFFA376A2),
       ),
       body: SingleChildScrollView(
