@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:psylethia/components/layouts/bottom_bar.dart';
 import '../viewmodel/mushroom_view_model.dart';
 
 class HomePage extends StatelessWidget {
@@ -17,7 +18,7 @@ class HomePage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Psylethia'),
-          backgroundColor: Color.fromARGB(255, 172, 142, 255),
+          backgroundColor: Color(0xFFA376A2),
         ),
 
         body: Consumer<MushroomsViewModel>(
@@ -58,9 +59,10 @@ class HomePage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 8),
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () =>
+                              Navigator.pushNamed(context, '/product'),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFFFFCC00),
+                            backgroundColor: const Color(0xFFA376A2),
                             foregroundColor: Colors.black,
                           ),
                           child: const Text(
@@ -76,6 +78,7 @@ class HomePage extends StatelessWidget {
             );
           },
         ),
+        bottomNavigationBar: BottomBar(),
       ),
     );
   }
