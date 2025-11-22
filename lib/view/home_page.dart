@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../viewmodel/mushroom_view_model.dart';
+import '../widgets/buttons/add_to_cart_button.dart';
+import '../widgets/buttons/view_product_button.dart';
+import '../widgets/app_bar/app_bar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -15,10 +18,7 @@ class HomePage extends StatelessWidget {
       },
 
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Psylethia'),
-          backgroundColor: Color.fromARGB(255, 172, 142, 255),
-        ),
+        appBar: const MyAppBar(),
 
         body: Consumer<MushroomsViewModel>(
           builder: (context, vm, _) {
@@ -54,19 +54,24 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
 
-                      // Bouton voir le produit -------------------
+                      // Bouton voir le produit avec widget button -------------------
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 3),
+                        child: ViewProductButton(
+                          onTap: () {
+                            print('Redirection vers le produit');
+                          },
+                          foregroundColor: null,
+                        ),
+                      ),
+
+                      // Bouton ajouter au panier avec widget button -------------------
                       Padding(
                         padding: const EdgeInsets.only(bottom: 8),
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFFFFCC00),
-                            foregroundColor: Colors.black,
-                          ),
-                          child: const Text(
-                            "Voir le produit",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
+                        child: AddToCartButton(
+                          onTap: () {
+                            print('Ajouté au panier !');
+                          },
                         ),
                       ),
                     ],
