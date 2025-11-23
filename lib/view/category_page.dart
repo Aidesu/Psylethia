@@ -44,7 +44,10 @@ class CategoryPage extends StatelessWidget {
                     ];
 
                     return GestureDetector(
-                      onTap: () => print('UwU from ${category[index]['name']}'),
+                      onTap: () => Navigator.pushNamed(
+                        context,
+                        '/category/view',
+                      ), //print('UwU from ${category[index]['name']}')
                       child: Container(
                         decoration: BoxDecoration(
                           color: Colors.white,

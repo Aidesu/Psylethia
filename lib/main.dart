@@ -31,9 +31,10 @@ class MyApp extends StatelessWidget {
         initialRoute: '/home',
 
         routes: {
-          '/home': (_) => const CategoryView(),
+          '/home': (_) => const HomePage(),
           '/category': (_) => const CategoryPage(),
           '/profile': (_) => const ProfilePage(),
+          '/category/view': (_) => CategoryView(),
           '/cart': (_) => const CartPage(),
         },
       ),
