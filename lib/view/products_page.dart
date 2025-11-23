@@ -49,36 +49,46 @@ class ProductsPage extends StatelessWidget {
                           Text('${mushroom.rate.toStringAsFixed(2)}'),
                           SizedBox(width: 3),
                           Icon(
-                            (mushroom.rate as num) >= 1
-                                ? Icons.star_rounded
+                            (mushroom.rate as num) >= 0.09
+                                ? mushroom.rate >= 0.5
+                                      ? Icons.star_rounded
+                                      : Icons.star_half_rounded
                                 : Icons.star_outline_rounded,
                             color: Colors.deepOrange,
                             size: 23,
                           ),
                           Icon(
-                            (mushroom.rate as num) >= 2
-                                ? Icons.star_rounded
+                            (mushroom.rate as num) >= 1.09
+                                ? mushroom.rate >= 1.5
+                                      ? Icons.star_rounded
+                                      : Icons.star_half_rounded
                                 : Icons.star_outline_rounded,
                             color: Colors.deepOrange,
                             size: 23,
                           ),
                           Icon(
-                            (mushroom.rate as num) >= 3
-                                ? Icons.star_rounded
+                            (mushroom.rate as num) >= 2.09
+                                ? mushroom.rate >= 2.5
+                                      ? Icons.star_rounded
+                                      : Icons.star_half_rounded
                                 : Icons.star_outline_rounded,
                             color: Colors.deepOrange,
                             size: 23,
                           ),
                           Icon(
-                            (mushroom.rate as num) >= 4
-                                ? Icons.star_rounded
+                            (mushroom.rate as num) >= 3.09
+                                ? mushroom.rate >= 3.5
+                                      ? Icons.star_rounded
+                                      : Icons.star_half_rounded
                                 : Icons.star_outline_rounded,
                             color: Colors.deepOrange,
                             size: 23,
                           ),
                           Icon(
-                            (mushroom.rate as num) >= 5
-                                ? Icons.star_rounded
+                            (mushroom.rate as num) >= 4.09
+                                ? mushroom.rate >= 4.5
+                                      ? Icons.star_rounded
+                                      : Icons.star_half_rounded
                                 : Icons.star_outline_rounded,
                             color: Colors.deepOrange,
                             size: 23,
@@ -140,8 +150,10 @@ class ProductsPage extends StatelessWidget {
                 SizedBox(height: 10),
                 Row(
                   children: [
+                    Text('Lowest price in last 30 days: '),
                     Text(
-                      'Lowest price in last 30 days: \$${((((mushroom.price as num?) ?? 0) * (1 + mushroom.discount / 100)).toStringAsFixed(1))}',
+                      '\$${((((mushroom.price as num?) ?? 0) * (1 + mushroom.discount / 100)).toStringAsFixed(1))}',
+                      style: TextStyle(decoration: TextDecoration.lineThrough),
                     ),
                   ],
                 ),
