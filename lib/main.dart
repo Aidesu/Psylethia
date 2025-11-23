@@ -6,6 +6,7 @@ import './viewmodel/mushroom_view_model.dart';
 import 'view/home_page.dart';
 import 'package:psylethia/view/category_page.dart';
 import 'package:psylethia/view/products_page.dart';
+import './model/product_model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,7 +32,6 @@ class MyApp extends StatelessWidget {
         routes: {
           '/home': (_) => const HomePage(),
           '/category': (_) => const CategoryPage(),
-          '/product': (_) => ProductsPage(),
           '/profile': (_) => const ProfilePage(),
           '/cart': (_) => const CartPage(),
         },

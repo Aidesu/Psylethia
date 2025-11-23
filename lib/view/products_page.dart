@@ -1,32 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:psylethia/components/layouts/app_bar.dart';
+import '../model/product_model.dart';
 import 'package:psylethia/components/layouts/bottom_bar.dart';
 
 class ProductsPage extends StatelessWidget {
-  final testProduct = {
-    "id": "1",
-    "name": "Psilocybe semilanceata",
-    "commonname": "Liberty cap",
-    "agent": "psilocybin, psilocin, and baeocystin",
-    "distribution": ["North America", "Europe", "Asia", "Australia"],
-    "img":
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Psilocybe_semilanceata_250px.jpg/500px-Psilocybe_semilanceata_250px.jpg",
-    "type": "poisonous",
-    "price": 25.99,
-    "stock": 126,
-    "rate": 3.2,
-    "customersRate": 25,
-    "discount": 10,
-    "choice": true,
-  };
+  final Mushroom mushroom;
 
-  ProductsPage({super.key});
+  ProductsPage({required this.mushroom, super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('${testProduct['name']}'),
+        title: Text('${mushroom.name}'),
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
           icon: Icon(Icons.arrow_back),
@@ -47,7 +32,7 @@ class ProductsPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            testProduct['name'] as String,
+                            mushroom.name,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 18,
@@ -61,38 +46,38 @@ class ProductsPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text('${testProduct['rate']}'),
+                          Text('${mushroom.rate.toStringAsFixed(2)}'),
                           SizedBox(width: 3),
                           Icon(
-                            (testProduct['rate'] as num) >= 1
+                            (mushroom.rate as num) >= 1
                                 ? Icons.star_rounded
                                 : Icons.star_outline_rounded,
                             color: Colors.deepOrange,
                             size: 23,
                           ),
                           Icon(
-                            (testProduct['rate'] as num) >= 2
+                            (mushroom.rate as num) >= 2
                                 ? Icons.star_rounded
                                 : Icons.star_outline_rounded,
                             color: Colors.deepOrange,
                             size: 23,
                           ),
                           Icon(
-                            (testProduct['rate'] as num) >= 3
+                            (mushroom.rate as num) >= 3
                                 ? Icons.star_rounded
                                 : Icons.star_outline_rounded,
                             color: Colors.deepOrange,
                             size: 23,
                           ),
                           Icon(
-                            (testProduct['rate'] as num) >= 4
+                            (mushroom.rate as num) >= 4
                                 ? Icons.star_rounded
                                 : Icons.star_outline_rounded,
                             color: Colors.deepOrange,
                             size: 23,
                           ),
                           Icon(
-                            (testProduct['rate'] as num) >= 5
+                            (mushroom.rate as num) >= 5
                                 ? Icons.star_rounded
                                 : Icons.star_outline_rounded,
                             color: Colors.deepOrange,
@@ -100,7 +85,7 @@ class ProductsPage extends StatelessWidget {
                           ),
 
                           SizedBox(width: 3),
-                          Text('(${testProduct['customersRate']})'),
+                          Text('(${mushroom.customersRate})'),
                         ],
                       ),
                     ),
@@ -111,7 +96,7 @@ class ProductsPage extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        '${testProduct['name']} ${testProduct['commonname']} ${testProduct['agent']}',
+                        '${mushroom.name} ${mushroom.commonname} ${mushroom.agent}',
                       ),
                     ),
                   ],
@@ -122,7 +107,7 @@ class ProductsPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(25),
                     color: Colors.black,
                   ),
-                  child: Image.network(testProduct['img'] as String),
+                  child: Image.network(mushroom.img as String),
                   width: double.infinity,
                 ),
                 Row(
@@ -140,14 +125,14 @@ class ProductsPage extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      '-${testProduct['discount']}%',
+                      '-${mushroom.discount}%',
                       style: TextStyle(color: Color(0xFFA376A2), fontSize: 30),
                     ),
                     SizedBox(width: 10),
                     Text('\$', style: TextStyle(fontSize: 20)),
                     SizedBox(width: 2),
                     Text(
-                      '${testProduct['price']}',
+                      '${mushroom.price.toStringAsFixed(2)}',
                       style: TextStyle(fontSize: 30),
                     ),
                   ],
@@ -156,7 +141,7 @@ class ProductsPage extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      'Lowest price in last 30 days: \$${((((testProduct['price'] as num?) ?? 0) * 1.25).toStringAsFixed(2))}',
+                      'Lowest price in last 30 days: \$${((((mushroom.price as num?) ?? 0) * (1 + mushroom.discount / 100)).toStringAsFixed(1))}',
                     ),
                   ],
                 ),
@@ -306,16 +291,14 @@ class ProductsPage extends StatelessWidget {
                 Row(
                   children: [
                     Expanded(child: Text('Type')),
-                    Expanded(child: Text('${testProduct['type'] ?? 'Unknow'}')),
+                    Expanded(child: Text('Soon...')), //! $mushroom.type
                   ],
                 ),
                 Divider(),
                 Row(
                   children: [
                     Expanded(child: Text('Distribution')),
-                    Expanded(
-                      child: Text(testProduct['distribution'].toString()),
-                    ),
+                    Expanded(child: Text('Global')),
                   ],
                 ),
               ],
