@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import './viewmodel/mushroom_view_model.dart';
 import 'view/main_page.dart';
 import 'view/home_page.dart';
+import './viewmodel/cart_page_view_model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,9 +14,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => MushroomsViewModel(),
-
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => MushroomsViewModel()),
+        ChangeNotifierProvider(create: (_) => CartViewModel()),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Psylethia',

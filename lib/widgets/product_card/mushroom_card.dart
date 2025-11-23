@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:psylethia/model/product_model.dart';
-import 'package:psylethia/widgets/buttons/add_to_cart_button.dart';
 import 'package:psylethia/widgets/buttons/view_product_button.dart';
+import '../../viewmodel/cart_page_view_model.dart';
 
 class ProductCard extends StatelessWidget {
   final Mushroom mushroom;
@@ -41,10 +42,18 @@ class ProductCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 5),
-              Expanded(
-                // appel du bouton ajouté produit
-                child: AddToCartButton(
-                  onTap: () => print('${m.name} ajouté au panier'),
+              SizedBox(
+                height: 35,
+                child: ElevatedButton(
+                  onPressed: () {
+                    context.read<CartViewModel>().add(mushroom);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.orangeAccent,
+                    foregroundColor: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 8),
+                  ),
+                  child: Text("Ajouter", style: TextStyle(fontSize: 12)),
                 ),
               ),
             ],
