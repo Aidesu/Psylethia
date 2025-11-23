@@ -16,12 +16,14 @@ class AddToCartButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ButtonStyle(
-        fixedSize: WidgetStatePropertyAll(Size(170, 40)),
         backgroundColor: WidgetStateProperty.all(backgroundColor),
         foregroundColor: WidgetStateProperty.all(foregroundColor),
+        padding: WidgetStateProperty.all(
+          const EdgeInsets.symmetric(vertical: 10),
+        ),
       ),
       onPressed: () => onTap(),
-      child: Text('Ajouter au panier'),
+      child: Text('Add'),
     );
   }
 }
