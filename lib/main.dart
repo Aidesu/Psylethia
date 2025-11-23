@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import './viewmodel/mushroom_view_model.dart';
+import 'view/main_page.dart';
 import 'view/home_page.dart';
 
 void main() {
@@ -20,11 +21,18 @@ class MyApp extends StatelessWidget {
         title: 'Psylethia',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+            selectedItemColor: Colors.black,
+            unselectedItemColor: Colors.black,
+          ),
         ),
 
-        initialRoute: '/home',
+        initialRoute: '/main',
 
-        routes: {'/home': (_) => const HomePage()},
+        routes: {
+          '/main': (_) => const MainPage(),
+          '/home': (_) => const HomePage(),
+        },
       ),
     );
   }

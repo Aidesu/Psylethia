@@ -17,21 +17,18 @@ class HomePage extends StatelessWidget {
       },
 
       child: Scaffold(
-        appBar: MyAppBar(
-          onSearch: (text) {
-            context.read<MushroomsViewModel>().filter(text);
-          },
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(kToolbarHeight),
+          child: Consumer<MushroomsViewModel>(
+            builder: (context, vm, _) => MyAppBar(onSearch: vm.filter),
+          ),
         ),
-
         body: Consumer<MushroomsViewModel>(
           builder: (context, vm, _) {
             if (vm.allMushrooms.isEmpty) {
               return const Center(child: CircularProgressIndicator());
             }
 
-            if (vm.mushrooms.isEmpty) {
-              return const Center(child: Text("Aucun champignon trouvé."));
-            }
             return GridView.builder(
               padding: const EdgeInsets.all(20),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
