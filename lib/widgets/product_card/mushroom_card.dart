@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:psylethia/model/product_model.dart';
 import 'package:psylethia/widgets/buttons/view_product_button.dart';
+import '../buttons/add_to_cart_button.dart';
 import '../../viewmodel/cart_page_view_model.dart';
 
 class ProductCard extends StatelessWidget {
@@ -36,24 +37,18 @@ class ProductCard extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                // appel du bouton ajouté produit
+                // appel du bouton voir produit
                 child: ViewProductButton(
                   onTap: () => print('Redirection vers ${m.name}'),
                 ),
               ),
               const SizedBox(width: 5),
-              SizedBox(
-                height: 35,
-                child: ElevatedButton(
-                  onPressed: () {
+              Expanded(
+                // appel du bouton ajouté au panier
+                child: AddToCartButton(
+                  onTap: () {
                     context.read<CartViewModel>().add(mushroom);
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.orangeAccent,
-                    foregroundColor: Colors.black,
-                    padding: EdgeInsets.symmetric(horizontal: 8),
-                  ),
-                  child: Text("Ajouter", style: TextStyle(fontSize: 12)),
                 ),
               ),
             ],
