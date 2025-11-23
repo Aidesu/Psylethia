@@ -2,23 +2,28 @@ import 'package:flutter/material.dart';
 
 class ViewProductButton extends StatelessWidget {
   final Function onTap;
-  final WidgetStateProperty<Color?>? foregroundColor;
+  final Color foregroundColor;
+  final Color backgroundColor;
+
   const ViewProductButton({
     super.key,
     required this.onTap,
-    required this.foregroundColor,
+    this.foregroundColor = Colors.black,
+    this.backgroundColor = Colors.orangeAccent,
   });
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      style: const ButtonStyle(
-        backgroundColor: WidgetStatePropertyAll<Color>(Colors.orangeAccent),
-        foregroundColor: WidgetStatePropertyAll<Color>(Colors.black),
-        fixedSize: WidgetStatePropertyAll(Size(170, 30)),
+      style: ButtonStyle(
+        backgroundColor: WidgetStateProperty.all(backgroundColor),
+        foregroundColor: WidgetStateProperty.all(foregroundColor),
+        padding: WidgetStateProperty.all(
+          const EdgeInsets.symmetric(vertical: 10),
+        ),
       ),
       onPressed: () => onTap,
-      child: Text('Voir le produit'),
+      child: Text('View'),
     );
   }
 }
