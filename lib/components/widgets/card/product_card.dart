@@ -110,7 +110,7 @@ class ProductCard extends StatelessWidget {
                       child: Row(
                         children: [
                           Text(mushroom.rate.toStringAsFixed(0)),
-                          Text('00+ bought in past month'),
+                          Expanded(child: Text('00+ bought in past month')),
                         ],
                       ),
                     ),
@@ -151,7 +151,7 @@ class ProductCard extends StatelessWidget {
                           Text(
                             mushroom.price.toStringAsFixed(2),
                             style: TextStyle(
-                              fontSize: 24,
+                              fontSize: 20,
                               fontWeight: FontWeight.w700,
                             ),
                           ),
