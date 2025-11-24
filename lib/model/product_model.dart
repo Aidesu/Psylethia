@@ -28,7 +28,7 @@ class Mushroom {
        customersRate = Random().nextInt(255),
        price = 12.49 + Random().nextDouble() * (79.99 - 12.49),
        choice = Random().nextBool(),
-       discount = Random().nextInt(25);
+       discount = Random().nextInt(20) + 5;
 
   factory Mushroom.fromJson(Map<String, dynamic> json) {
     return Mushroom(

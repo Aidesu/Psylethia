@@ -20,6 +20,7 @@ class ProductCard extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
+          color: Colors.white,
           border: Border.all(
             width: 1,
             color: const Color.fromARGB(31, 29, 29, 29),
@@ -28,7 +29,12 @@ class ProductCard extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Expanded(flex: 11, child: Image.network(mushroom.img)),
+            Expanded(
+              flex: 11,
+              child: mushroom.img == ""
+                  ? Image.asset('assets/images/no_image.png')
+                  : Image.network(mushroom.img, fit: BoxFit.cover),
+            ),
             Expanded(
               flex: 9,
               child: Container(
