@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:psylethia/model/product_model.dart';
-import 'package:psylethia/widgets/buttons/view_product_button.dart';
+import 'package:psylethia/components/widgets/buttons/view_product_button.dart';
 import '../buttons/add_to_cart_button.dart';
-import '../../viewmodel/cart_page_view_model.dart';
+import '../../../viewmodel/cart_page_view_model.dart';
 
 class ProductCard extends StatelessWidget {
   final Mushroom mushroom;

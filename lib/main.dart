@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:psylethia/viewmodel/cart_page_view_model.dart';
 import './viewmodel/mushroom_view_model.dart';
 import 'view/main_page.dart';
 import 'view/home_page.dart';
-import './viewmodel/cart_page_view_model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,6 +35,13 @@ class MyApp extends StatelessWidget {
         routes: {
           '/main': (_) => const MainPage(),
           '/home': (_) => const HomePage(),
+          // =======
+          //           '/home': (_) => const HomePage(),
+          //           '/category': (_) => const CategoryPage(),
+          //           '/profile': (_) => const ProfilePage(),
+          //           '/category/view': (_) => CategoryView(),
+          //           '/cart': (_) => const CartPage(),
+          // >>>>>>> 1ed165ecfc556859aa319936a5d17bc4a353652e
         },
       ),
     );
