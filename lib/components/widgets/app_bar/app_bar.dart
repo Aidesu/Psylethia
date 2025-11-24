@@ -22,7 +22,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: TextField(
           onChanged: onSearch,
           decoration: InputDecoration(
-            hintText: 'Rechercher...',
+            hintText: 'Search on Psylethia.com',
             contentPadding: const EdgeInsets.symmetric(horizontal: 10),
             filled:
                 true, // rend blanc l'input de recherche, sinon rend comme la couleur du fond

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:psylethia/viewmodel/mushroom_view_model.dart';
 import '../viewmodel/cart_page_view_model.dart';
+import '../components/widgets/app_bar/app_bar.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -8,7 +10,12 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Panier")),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: Consumer<MushroomsViewModel>(
+          builder: (context, vm, _) => MyAppBar(onSearch: vm.filter),
+        ),
+      ),
 
       body: Consumer<CartViewModel>(
         builder: (context, cart, _) {

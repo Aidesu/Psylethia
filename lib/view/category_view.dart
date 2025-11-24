@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:psylethia/components/layouts/bottom_bar.dart';
+import '../components/widgets/app_bar/app_bar.dart';
 import 'package:psylethia/components/widgets/card/product_card.dart';
 import '../viewmodel/mushroom_view_model.dart';
+import '../components/widgets/app_bar/bottom_bar.dart';
 
 class CategoryView extends StatelessWidget {
   const CategoryView({super.key});
@@ -17,9 +18,11 @@ class CategoryView extends StatelessWidget {
       },
 
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('TEST'),
-          backgroundColor: Color(0xFFA376A2),
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(kToolbarHeight),
+          child: Consumer<MushroomsViewModel>(
+            builder: (context, vm, _) => MyAppBar(onSearch: vm.filter),
+          ),
         ),
 
         body: Consumer<MushroomsViewModel>(
@@ -41,7 +44,10 @@ class CategoryView extends StatelessWidget {
             );
           },
         ),
-        // bottomNavigationBar: BottomBar(),
+        bottomNavigationBar: MyBottomNavBar(
+          currentIndex: 0,
+          onTap: (int value) {},
+        ),
       ),
     );
   }
