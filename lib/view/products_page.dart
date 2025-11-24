@@ -379,25 +379,6 @@ class ProductsPage extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: MyBottomNavBar(
-        currentIndex: 0,
-        onTap: (index) {
-          switch (index) {
-            case 0:
-              Navigator.pushReplacementNamed(context, '/home');
-              break;
-            case 1:
-              Navigator.pushReplacementNamed(context, '/profile');
-              break;
-            case 2:
-              Navigator.pushReplacementNamed(context, '/cart');
-              break;
-            case 3:
-              Navigator.pushReplacementNamed(context, '/category');
-              break;
-          }
-        },
-      ),
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:psylethia/components/widgets/card/product_card.dart';
 import '../viewmodel/mushroom_view_model.dart';
 import '../components/widgets/app_bar/app_bar.dart';
+import '../components/layouts/bottom_bar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -47,6 +48,7 @@ class HomePage extends StatelessWidget {
             );
           },
         ),
+        bottomNavigationBar: BottomBar(),
       ),
     );
   }

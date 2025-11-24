@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../components/layouts/bottom_bar.dart';
 
 class CategoryPage extends StatelessWidget {
   const CategoryPage({super.key});
@@ -102,6 +103,7 @@ class CategoryPage extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: BottomBar(),
     );
   }
 }

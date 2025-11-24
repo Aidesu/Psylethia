@@ -41,7 +41,7 @@ class CategoryView extends StatelessWidget {
             );
           },
         ),
-        // bottomNavigationBar: BottomBar(),
+        bottomNavigationBar: BottomBar(),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../viewmodel/cart_page_view_model.dart';
+import '../';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -34,6 +35,7 @@ class CartPage extends StatelessWidget {
           );
         },
       ),
+      bottomNavigationBar: BottomBar(),
     );
   }
 }

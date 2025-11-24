@@ -26,10 +26,7 @@ class MyBottomNavBar extends StatelessWidget {
           icon: Icon(Icons.home_outlined),
           label: "Accueil",
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person_3_outlined),
-          label: "Profil",
-        ),
+        BottomNavigationBarItem(icon: Icon(Icons.person_3_outlined), label: ""),
         BottomNavigationBarItem(
           icon: Icon(Icons.shopping_cart_outlined),
           label: "Panier",

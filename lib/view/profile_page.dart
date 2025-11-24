@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../components/layouts/bottom_bar.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -11,6 +12,7 @@ class ProfilePage extends StatelessWidget {
         backgroundColor: Color(0xFFA376A2),
       ),
       body: Center(child: Container(child: Text('Profile Page'))),
+      bottomNavigationBar: BottomBar(),
     );
   }
 }
