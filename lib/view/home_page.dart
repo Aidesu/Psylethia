@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:psylethia/components/widgets/product_card/mushroom_card.dart';
+import 'package:psylethia/components/widgets/card/product_card.dart';
 import '../viewmodel/mushroom_view_model.dart';
 import '../components/widgets/app_bar/app_bar.dart';
 
