@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:psylethia/view/category_view.dart';
+import 'package:psylethia/viewmodel/mushroom_view_model.dart';
+import '../components/widgets/app_bar/app_bar.dart';
 
 class CategoryPage extends StatelessWidget {
   const CategoryPage({super.key});
@@ -6,11 +10,13 @@ class CategoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Psylethia'),
-        backgroundColor: Color(0xFFA376A2),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: Consumer<MushroomsViewModel>(
+          builder: (context, vm, _) => MyAppBar(onSearch: vm.filter),
+        ),
       ),
-      // bottomNavigationBar: BottomBar(),
+
       body: Center(
         child: Container(
           margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
@@ -43,9 +49,9 @@ class CategoryPage extends StatelessWidget {
                     ];
 
                     return GestureDetector(
-                      onTap: () => Navigator.pushNamed(
+                      onTap: () => Navigator.push(
                         context,
-                        '/category/view',
+                        MaterialPageRoute(builder: (_) => CategoryView()),
                       ), //print('UwU from ${category[index]['name']}')
                       child: Container(
                         decoration: BoxDecoration(

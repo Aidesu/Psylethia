@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:psylethia/viewmodel/mushroom_view_model.dart';
+import '../components/widgets/app_bar/app_bar.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -6,9 +9,11 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Psylethia'),
-        backgroundColor: Color(0xFFA376A2),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: Consumer<MushroomsViewModel>(
+          builder: (context, vm, _) => MyAppBar(onSearch: vm.filter),
+        ),
       ),
       body: Center(child: Container(child: Text('Profile Page'))),
     );
