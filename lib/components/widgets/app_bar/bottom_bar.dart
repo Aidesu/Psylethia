@@ -22,16 +22,19 @@ class MyBottomNavBar extends StatelessWidget {
       selectedIconTheme: const IconThemeData(color: Colors.black),
       unselectedIconTheme: const IconThemeData(color: Colors.black),
       items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Accueil"),
         BottomNavigationBarItem(
-          icon: Icon(Icons.category),
-          label: "Catégories",
+          icon: Icon(Icons.home_outlined),
+          label: "Accueil",
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.shopping_cart),
+          icon: Icon(Icons.person_3_outlined),
+          label: "Profil",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.shopping_cart_outlined),
           label: "Panier",
         ),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profil"),
+        BottomNavigationBarItem(icon: Icon(Icons.menu), label: "Catégories"),
       ],
     );
   }

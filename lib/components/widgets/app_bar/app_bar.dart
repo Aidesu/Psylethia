@@ -9,7 +9,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     required this.onSearch,
     this.foregroundColor = Colors.black,
-    this.backgroundColor = Colors.orangeAccent,
+    this.backgroundColor = const Color(0xFFA376A2),
   });
 
   @override

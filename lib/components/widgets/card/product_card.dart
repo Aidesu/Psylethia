@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:psylethia/viewmodel/cart_page_view_model.dart';
 import '../../../model/product_model.dart';
 import '../../../view/products_page.dart';
+import '../buttons/add_to_cart_button.dart';
 
 class ProductCard extends StatelessWidget {
   final Mushroom mushroom;
@@ -186,14 +189,10 @@ class ProductCard extends StatelessWidget {
                     Row(
                       children: [
                         Expanded(
-                          flex: 1,
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xFFA376A2),
-                              foregroundColor: Colors.black,
-                            ),
-                            child: Text('Add to basket'),
+                          child: AddToCartButton(
+                            onTap: () {
+                              context.read<CartViewModel>().add(mushroom);
+                            },
                           ),
                         ),
                       ],

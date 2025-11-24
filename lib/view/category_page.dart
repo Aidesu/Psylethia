@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:psylethia/components/layouts/bottom_bar.dart';
 
 class CategoryPage extends StatelessWidget {
   const CategoryPage({super.key});
@@ -11,7 +10,7 @@ class CategoryPage extends StatelessWidget {
         title: Text('Psylethia'),
         backgroundColor: Color(0xFFA376A2),
       ),
-      bottomNavigationBar: BottomBar(),
+      // bottomNavigationBar: BottomBar(),
       body: Center(
         child: Container(
           margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
