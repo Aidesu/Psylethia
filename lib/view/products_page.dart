@@ -112,6 +112,29 @@ class ProductsPage extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 5),
+                mushroom.choice
+                    ? Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Color(0xFF8D5F8C),
+                            ),
+                            padding: EdgeInsets.fromLTRB(4, 2, 4, 2),
+
+                            child: Text(
+                              'Psylethia choice',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    : SizedBox(),
+                SizedBox(height: 5),
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),
@@ -147,7 +170,7 @@ class ProductsPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 5),
                 Row(
                   children: [
                     Text('Lowest price in last 30 days: '),
@@ -157,7 +180,17 @@ class ProductsPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 5),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        'FREE Returns',
+                        style: TextStyle(color: Colors.blueAccent),
+                      ),
+                    ),
+                  ],
+                ),
                 Row(
                   children: [
                     Expanded(
@@ -302,8 +335,29 @@ class ProductsPage extends StatelessWidget {
                 Divider(),
                 Row(
                   children: [
+                    Expanded(child: Text('name')),
+                    Expanded(child: Text(mushroom.name)),
+                  ],
+                ),
+                Divider(),
+                Row(
+                  children: [
+                    Expanded(child: Text('Common name')),
+                    Expanded(child: Text(mushroom.commonname)),
+                  ],
+                ),
+                Divider(),
+                Row(
+                  children: [
                     Expanded(child: Text('Type')),
-                    Expanded(child: Text('Soon...')), //! $mushroom.type
+                    Expanded(child: Text(mushroom.type)),
+                  ],
+                ),
+                Divider(),
+                Row(
+                  children: [
+                    Expanded(child: Text('agent')),
+                    Expanded(child: Text(mushroom.agent)),
                   ],
                 ),
                 Divider(),
@@ -311,6 +365,13 @@ class ProductsPage extends StatelessWidget {
                   children: [
                     Expanded(child: Text('Distribution')),
                     Expanded(child: Text('Global')),
+                  ],
+                ),
+                Divider(),
+                Row(
+                  children: [
+                    Expanded(child: Text('Box Contents')),
+                    Expanded(child: Text('Specimen Vial Mushroom Class A')),
                   ],
                 ),
               ],

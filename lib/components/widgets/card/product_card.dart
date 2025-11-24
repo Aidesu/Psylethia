@@ -25,7 +25,7 @@ class ProductCard extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Expanded(flex: 10, child: Image.network(mushroom.img)),
+            Expanded(flex: 11, child: Image.network(mushroom.img)),
             Expanded(
               flex: 9,
               child: Container(
@@ -111,6 +111,32 @@ class ProductCard extends StatelessWidget {
                         ],
                       ),
                     ),
+                    SizedBox(height: 5),
+                    mushroom.choice
+                        ? Expanded(
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.all(4),
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFF6B3F69),
+                                    borderRadius: BorderRadius.circular(3),
+                                  ),
+
+                                  child: Text(
+                                    'Black friday deal',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        : SizedBox(),
                     Expanded(
                       flex: 2,
                       child: Row(
