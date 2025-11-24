@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
             return GridView.builder(
               padding: const EdgeInsets.all(20),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, // 2 en rangée
+                crossAxisCount: 1, // 2 en rangée
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 10,
                 childAspectRatio: 0.80,
