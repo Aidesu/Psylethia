@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:psylethia/components/layouts/bottom_bar.dart';
 import 'package:psylethia/components/widgets/card/product_card.dart';
-import 'package:psylethia/view/products_page.dart';
 import '../viewmodel/mushroom_view_model.dart';
 
 class CategoryView extends StatelessWidget {
