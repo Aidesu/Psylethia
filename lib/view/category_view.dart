@@ -24,7 +24,7 @@ class CategoryView extends StatelessWidget {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(kToolbarHeight),
           child: Consumer<MushroomsViewModel>(
-            builder: (context, vm, _) => MyAppBar(onSearch: vm.filter),
+            builder: (context, vm, _) => const MyAppBar(),
           ),
         ),
 

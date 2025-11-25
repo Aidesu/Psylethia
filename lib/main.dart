@@ -10,7 +10,17 @@ import 'view/main_page.dart';
 import 'view/home_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => MushroomsViewModel()..fetchMushrooms(),
+        ),
+        ChangeNotifierProvider(create: (_) => CartViewModel()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -18,32 +28,30 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => MushroomsViewModel()),
-        ChangeNotifierProvider(create: (_) => CartViewModel()),
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Psylethia',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-            selectedItemColor: Colors.black,
-            unselectedItemColor: Colors.black,
-          ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Psylethia',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.black,
         ),
-
-        initialRoute: '/main',
-
-        routes: {
-          '/main': (_) => const MainPage(),
-          '/home': (_) => const HomePage(),
-          '/category': (_) => const CategoryPage(),
-          '/profile': (_) => const ProfilePage(),
-          '/cart': (_) => const CartPage(),
-        },
       ),
+
+      initialRoute: '/main',
+
+      routes: {
+        '/main': (_) => const MainPage(),
+        '/home': (_) => const HomePage(),
+        '/category': (_) => const CategoryPage(),
+        '/category/view': (context) {
+          final args = ModalRoute.of(context)!.settings.arguments as String;
+          return CategoryView(category: args);
+        },
+        '/profile': (_) => const ProfilePage(),
+        '/cart': (_) => const CartPage(),
+      },
     );
   }
 }

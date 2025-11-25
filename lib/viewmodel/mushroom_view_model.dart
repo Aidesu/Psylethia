@@ -5,19 +5,30 @@ import '../model/product_model.dart';
 class MushroomsViewModel extends ChangeNotifier {
   List<Mushroom> mushrooms = [];
   List<Mushroom> allMushrooms = [];
+  bool isLoading = true;
 
   Future<void> fetchMushrooms() async {
-    allMushrooms = await ApiMushrooms.fetchMushrooms();
-    mushrooms = allMushrooms;
+    final data = await ApiMushrooms.fetchMushrooms();
+
+    int generatedId = 1;
+
+    allMushrooms = data.map((m) {
+      // chaque champignon reçoit un id unique
+      m.id = generatedId++;
+      return m;
+    }).toList();
+
+    mushrooms = List.from(allMushrooms);
+    isLoading = false;
     notifyListeners();
   }
 
   void filter(String query) {
     if (query.isEmpty) {
-      mushrooms = allMushrooms;
+      mushrooms = List.from(allMushrooms);
     } else {
+      final q = query.toLowerCase();
       mushrooms = allMushrooms.where((m) {
-        final q = query.toLowerCase();
         return m.name.toLowerCase().contains(q) ||
             m.commonname.toLowerCase().contains(q);
       }).toList();

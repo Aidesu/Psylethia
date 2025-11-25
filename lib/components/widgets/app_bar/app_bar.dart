@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:psylethia/components/widgets/app_bar/search_page.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Color foregroundColor;
   final Color backgroundColor;
-  final Function(String) onSearch;
 
   const MyAppBar({
     super.key,
-    required this.onSearch,
     this.foregroundColor = Colors.black,
     this.backgroundColor = const Color(0xFFA376A2),
   });
@@ -20,12 +19,17 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: SizedBox(
         height: 40,
         child: TextField(
-          onChanged: onSearch,
+          readOnly: true,
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const SearchPage()),
+            );
+          },
           decoration: InputDecoration(
-            hintText: 'Search on Psylethia.com',
+            hintText: 'Search Psylethia.com',
             contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-            filled:
-                true, // rend blanc l'input de recherche, sinon rend comme la couleur du fond
+            filled: true,
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
             prefixIcon: const Icon(Icons.search, color: Colors.black),
           ),

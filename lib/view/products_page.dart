@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:psylethia/viewmodel/cart_page_view_model.dart';
 import '../model/product_model.dart';
 import 'package:psylethia/components/widgets/app_bar/bottom_bar.dart';
 
@@ -237,7 +239,20 @@ class ProductsPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(25),
                         ),
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Provider.of<CartViewModel>(
+                              context,
+                              listen: false,
+                            ).add(mushroom);
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  "${mushroom.name} ajouté au panier",
+                                ),
+                              ),
+                            );
+                          },
+
                           child: Text(
                             'Add to Basket',
                             style: TextStyle(
