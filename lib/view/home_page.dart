@@ -59,10 +59,18 @@ class HomePage extends StatelessWidget {
                         Expanded(
                           flex: 2,
                           child: Container(
-                            padding: EdgeInsets.all(10),
+                            padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                             child: ListView(
                               scrollDirection: Axis.horizontal,
-                              children: [BigCard(), BigCard4x()],
+                              children: [
+                                BigCard(),
+                                BigCard4x(
+                                  mushroom_1: vm.allMushrooms[0],
+                                  mushroom_2: vm.allMushrooms[1],
+                                  mushroom_3: vm.allMushrooms[3],
+                                  mushroom_4: vm.allMushrooms[5],
+                                ),
+                              ],
                             ),
                           ),
                         ),

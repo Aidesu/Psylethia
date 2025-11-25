@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:psylethia/components/widgets/home/big_card_product.dart';
+import '../../../model/product_model.dart';
 
 class BigCard4x extends StatelessWidget {
-  const BigCard4x({super.key});
+  final Mushroom mushroom_1;
+  final Mushroom mushroom_2;
+  final Mushroom mushroom_3;
+  final Mushroom mushroom_4;
+  const BigCard4x({
+    required this.mushroom_1,
+    required this.mushroom_2,
+    required this.mushroom_3,
+    required this.mushroom_4,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +47,9 @@ class BigCard4x extends StatelessWidget {
             flex: 5,
             child: Row(
               children: [
-                Expanded(child: Container(color: Colors.white)),
+                Expanded(child: BigCardProduct(mushroom: mushroom_1)),
                 SizedBox(width: 10),
-                Expanded(child: Container(color: Colors.white)),
+                Expanded(child: BigCardProduct(mushroom: mushroom_2)),
               ],
             ),
           ),
@@ -46,9 +58,9 @@ class BigCard4x extends StatelessWidget {
             flex: 5,
             child: Row(
               children: [
-                Expanded(child: Container(color: Colors.white)),
+                Expanded(child: BigCardProduct(mushroom: mushroom_3)),
                 SizedBox(width: 10),
-                Expanded(child: Container(color: Colors.white)),
+                Expanded(child: BigCardProduct(mushroom: mushroom_4)),
               ],
             ),
           ),
