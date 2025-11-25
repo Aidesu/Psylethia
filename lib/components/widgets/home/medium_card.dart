@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 
 class MediumCard extends StatelessWidget {
   final String text;
-  const MediumCard({this.text = "no text", super.key});
+  final String image;
+  const MediumCard({
+    this.image = 'assets/images/psylethia_logo.png',
+    this.text = "no text",
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -10,28 +15,32 @@ class MediumCard extends StatelessWidget {
       height: 200,
       width: 160,
       margin: EdgeInsets.all(5),
-      padding: EdgeInsets.all(15),
+      padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
       decoration: BoxDecoration(
         color: Color(0xFF8D5F8C),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
         children: [
-          Row(
-            children: [
-              Expanded(
-                child: Text(
-                  text,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                    fontSize: 20,
+          Expanded(
+            flex: 1,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Text(
+                    text,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-          Expanded(child: Image.asset('assets/images/psylethia_logo.png')),
+          Expanded(flex: 3, child: Image.asset(image)),
         ],
       ),
     );

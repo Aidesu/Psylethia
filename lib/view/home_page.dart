@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:psylethia/components/widgets/home/Big_card_1.dart';
+import 'package:psylethia/components/widgets/home/big_card_product.dart';
 import 'package:psylethia/components/widgets/home/small_card.dart';
 import '../viewmodel/mushroom_view_model.dart';
 import '../components/widgets/app_bar/app_bar.dart';
@@ -37,9 +39,7 @@ class HomePage extends StatelessWidget {
                       colors: [
                         Color(0xFF6B3F69),
                         Color(0xFF8D5F8C),
-                        Color(0xFF8D5F8C),
                         Color(0xFFDDC3C3),
-                        Colors.white,
                         Colors.white,
                       ],
                       begin: Alignment.topCenter,
@@ -56,12 +56,41 @@ class HomePage extends StatelessWidget {
                           child: ListView(
                             scrollDirection: Axis.horizontal,
                             children: [
-                              const BigCard(),
+                              const BigCard(
+                                title: 'Gourmet Selection',
+                                subTitle: '24 - 25 Nov',
+
+                                content:
+                                    'Exceptional mushrooms at unbeatable prices',
+                                color: Color(0xFF6B3F69),
+                              ),
+                              const BigCard(
+                                title: 'Epic deals.\nHoliday feels.',
+                                content: '',
+                                image: 'assets/images/mushroom_2.png',
+                                subTitle: '',
+                                color: Color(0xFF8D5F8C),
+                              ),
                               BigCard4x(
+                                text: "Don't miss these deals",
                                 mushroom_1: vm.allMushrooms[0],
                                 mushroom_2: vm.allMushrooms[1],
-                                mushroom_3: vm.allMushrooms[3],
+                                mushroom_3: vm.allMushrooms[119],
                                 mushroom_4: vm.allMushrooms[5],
+                              ),
+                              const BigCard(
+                                title: 'Most loved: Mushrooms',
+                                content: '',
+                                subTitle: '',
+                                image: 'assets/images/mushroom_1.png',
+                                color: Color(0xFF8D5F8C),
+                              ),
+                              BigCard4x(
+                                text: "Shop big savings for you",
+                                mushroom_1: vm.allMushrooms[6],
+                                mushroom_2: vm.allMushrooms[48],
+                                mushroom_3: vm.allMushrooms[8],
+                                mushroom_4: vm.allMushrooms[99],
                               ),
                             ],
                           ),
@@ -73,9 +102,18 @@ class HomePage extends StatelessWidget {
                           child: ListView(
                             scrollDirection: Axis.horizontal,
                             children: const [
-                              MediumCard(text: 'Shop all deals'),
-                              MediumCard(text: 'Deals under \$50'),
-                              MediumCard(text: 'Deals under \$20'),
+                              MediumCard(
+                                text: 'Shop all deals',
+                                image: 'assets/images/psylethia_cart.png',
+                              ),
+                              MediumCard(
+                                text: 'Deals under \$50',
+                                image: 'assets/images/mushroom_bag.png',
+                              ),
+                              MediumCard(
+                                text: 'Deals under \$20',
+                                image: 'assets/images/mushroom_bag.png',
+                              ),
                             ],
                           ),
                         ),
@@ -116,7 +154,7 @@ class HomePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 Container(
-                  margin: const EdgeInsets.all(5),
+                  margin: const EdgeInsets.fromLTRB(5, 5, 5, 0),
                   child: Column(
                     children: [
                       Container(
@@ -133,9 +171,9 @@ class HomePage extends StatelessWidget {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      Container(
                         width: double.infinity,
-                        height: 250,
+                        height: 150,
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: const [
@@ -145,6 +183,57 @@ class HomePage extends StatelessWidget {
                             SmallCard(text: 'Amanita'),
                             SmallCard(text: 'Claviceps'),
                             SmallCard(text: 'Coprinopsis'),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.fromLTRB(5, 0, 5, 0),
+                  child: Column(
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.all(5),
+                        child: const Row(
+                          children: [
+                            Text(
+                              'Black Friday deals for you',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        height: 450,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            BigCard1(
+                              text: 'Cortinarius mushrooms',
+                              mushroom1: vm.allMushrooms[50],
+                              mushroom2: vm.allMushrooms[51],
+                              mushroom3: vm.allMushrooms[52],
+                              mushroom4: vm.allMushrooms[54],
+                            ),
+                            BigCard1(
+                              text: 'Helvella mushrooms',
+                              mushroom1: vm.allMushrooms[84],
+                              mushroom2: vm.allMushrooms[85],
+                              mushroom3: vm.allMushrooms[86],
+                              mushroom4: vm.allMushrooms[87],
+                            ),
+                            BigCard1(
+                              text: 'Amanita mushrooms',
+                              mushroom1: vm.allMushrooms[27],
+                              mushroom2: vm.allMushrooms[32],
+                              mushroom3: vm.allMushrooms[38],
+                              mushroom4: vm.allMushrooms[39],
+                            ),
                           ],
                         ),
                       ),

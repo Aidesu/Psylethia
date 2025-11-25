@@ -36,7 +36,7 @@ class CategoryView extends StatelessWidget {
                 crossAxisCount: 2, // 2 en rangée
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 10,
-                childAspectRatio: 0.40,
+                childAspectRatio: 0.52,
               ),
               itemCount: vm.mushrooms.length,
               itemBuilder: (context, index) {

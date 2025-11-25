@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
 
 class BigCard extends StatelessWidget {
-  const BigCard({super.key});
+  final Color color;
+  final String title;
+  final String content;
+  final String subTitle;
+  final String image;
+  const BigCard({
+    required this.content,
+    required this.title,
+    required this.color,
+    required this.subTitle,
+    this.image = 'assets/images/psylethia_logo.png',
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +23,7 @@ class BigCard extends StatelessWidget {
       margin: EdgeInsets.all(5),
       padding: EdgeInsets.all(15),
       decoration: BoxDecoration(
-        color: Color(0xFF6B3F69),
+        color: color,
         borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
@@ -20,7 +32,7 @@ class BigCard extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  'Gourmet Selection',
+                  title,
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -35,7 +47,7 @@ class BigCard extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: Text(
-                  'Exceptional mushrooms at unbeatable prices Porcini, Morels, Black Trumpets, Chanterelles',
+                  content,
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w400,
@@ -52,7 +64,7 @@ class BigCard extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: [Image.asset('assets/images/psylethia_logo.png')],
+              children: [Expanded(child: Image.asset(image))],
             ),
           ),
           Expanded(
@@ -62,7 +74,7 @@ class BigCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  '24 - 25 Nov',
+                  subTitle,
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,

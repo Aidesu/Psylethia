@@ -89,7 +89,6 @@ class ProductCard extends StatelessWidget {
                       Row(
                         children: [
                           Text(mushroom.rate.toStringAsFixed(0)),
-                          const SizedBox(width: 4),
                           const Expanded(
                             child: Text("00+ bought in past month"),
                           ),
@@ -99,20 +98,24 @@ class ProductCard extends StatelessWidget {
                       const SizedBox(height: 6),
 
                       if (mushroom.choice)
-                        Container(
-                          padding: const EdgeInsets.all(4),
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF6B3F69),
-                            borderRadius: BorderRadius.circular(3),
-                          ),
-                          child: const Text(
-                            'Black friday deal',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
+                        Row(
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.all(4),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFF6B3F69),
+                                borderRadius: BorderRadius.circular(3),
+                              ),
+                              child: const Text(
+                                'Black friday deal',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ),
-                          ),
+                          ],
                         ),
 
                       const SizedBox(height: 6),
