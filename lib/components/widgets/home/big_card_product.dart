@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:psylethia/viewmodel/cart_page_view_model.dart';
 import '../../../model/product_model.dart';
 import '../../../view/products_page.dart';
-import '../buttons/add_to_cart_button.dart';
 
 class BigCardProduct extends StatelessWidget {
   final Mushroom mushroom;

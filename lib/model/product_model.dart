@@ -64,9 +64,9 @@ class Mushroom {
 
       price: 12.49 + Random().nextDouble() * (79.99 - 12.49),
       rate: 2 + Random().nextDouble() * 3,
-      customersRate: Random().nextInt(255),
+      customersRate: Random().nextInt(255) + 255,
       stock: Random().nextInt(100) + 50,
-      discount: Random().nextInt(25),
+      discount: Random().nextInt(20) + 5,
       choice: Random().nextBool(),
 
       quantity: 1,

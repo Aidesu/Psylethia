@@ -109,10 +109,12 @@ class HomePage extends StatelessWidget {
                               MediumCard(
                                 text: 'Deals under \$50',
                                 image: 'assets/images/mushroom_bag.png',
+                                price: 50,
                               ),
                               MediumCard(
                                 text: 'Deals under \$20',
                                 image: 'assets/images/mushroom_bag.png',
+                                price: 20,
                               ),
                             ],
                           ),
@@ -177,12 +179,21 @@ class HomePage extends StatelessWidget {
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: const [
-                            SmallCard(text: 'Deadly'),
-                            SmallCard(text: 'Poisonous'),
                             SmallCard(text: 'Agaricus'),
                             SmallCard(text: 'Amanita'),
                             SmallCard(text: 'Claviceps'),
                             SmallCard(text: 'Coprinopsis'),
+                            SmallCard(text: 'Galerina'),
+                            SmallCard(text: 'Clitocybe'),
+                            SmallCard(text: 'Cudonia'),
+                            SmallCard(text: 'Claviceps'),
+                            SmallCard(text: 'Coprinopsis'),
+                            SmallCard(text: 'Cortinarius'),
+                            SmallCard(text: 'Entoloma'),
+                            SmallCard(text: 'Gyromitra'),
+                            SmallCard(text: 'Ampulloclitocybe'),
+                            SmallCard(text: 'Chlorophyllum'),
+                            SmallCard(text: 'Echinoderma'),
                           ],
                         ),
                       ),
@@ -237,7 +248,65 @@ class HomePage extends StatelessWidget {
                           ],
                         ),
                       ),
+                      SizedBox(height: 35),
+                      Container(
+                        margin: const EdgeInsets.all(5),
+                        child: const Row(
+                          children: [
+                            Text(
+                              'Deals to discover',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        height: 450,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            BigCard1(
+                              text: 'Cortinarius mushrooms',
+                              mushroom1: vm.allMushrooms[50],
+                              mushroom2: vm.allMushrooms[51],
+                              mushroom3: vm.allMushrooms[52],
+                              mushroom4: vm.allMushrooms[54],
+                            ),
+                            BigCard1(
+                              text: 'Helvella mushrooms',
+                              mushroom1: vm.allMushrooms[84],
+                              mushroom2: vm.allMushrooms[85],
+                              mushroom3: vm.allMushrooms[86],
+                              mushroom4: vm.allMushrooms[87],
+                            ),
+                            BigCard1(
+                              text: 'Amanita mushrooms',
+                              mushroom1: vm.allMushrooms[27],
+                              mushroom2: vm.allMushrooms[32],
+                              mushroom3: vm.allMushrooms[38],
+                              mushroom4: vm.allMushrooms[39],
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
+                  ),
+                ),
+                const SizedBox(height: 35),
+                Container(
+                  width: double.infinity,
+                  height: 450,
+                  child: BigCard1(
+                    text: 'More deals to consider',
+                    radius: 0,
+                    mushroom1: vm.allMushrooms[128],
+                    mushroom2: vm.allMushrooms[129],
+                    mushroom3: vm.allMushrooms[122],
+                    mushroom4: vm.allMushrooms[124],
                   ),
                 ),
                 const SizedBox(height: 100),
