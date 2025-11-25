@@ -25,8 +25,8 @@ class Mushroom {
     required this.type,
   }) : stock = Random().nextInt(100) + 50,
        rate = 2 + Random().nextDouble() * (5 - 2),
-       customersRate = Random().nextInt(255),
-       price = 12.49 + Random().nextDouble() * (79.99 - 12.49),
+       customersRate = Random().nextInt(255) + 255,
+       price = 16.49 + Random().nextDouble() * (119.99 - 16.49),
        choice = Random().nextBool(),
        discount = Random().nextInt(20) + 5;
 
