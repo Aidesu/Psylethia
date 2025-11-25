@@ -11,164 +11,140 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => ProductsPage(mushroom: mushroom)),
-        );
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(
-            width: 1,
-            color: const Color.fromARGB(31, 29, 29, 29),
-          ),
-          borderRadius: BorderRadius.circular(5),
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(
+          width: 1,
+          color: const Color.fromARGB(31, 29, 29, 29),
         ),
-        child: Column(
-          children: [
-            Expanded(flex: 11, child: Image.network(mushroom.img)),
-            Expanded(
-              flex: 9,
-              child: Container(
-                padding: EdgeInsets.all(8),
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Text(
-                              mushroom.name,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 15,
-                              ),
-                            ),
+        borderRadius: BorderRadius.circular(5),
+      ),
+
+      child: Column(
+        children: [
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => ProductsPage(mushroom: mushroom),
+                ),
+              );
+            },
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 150,
+                  child: mushroom.img == ""
+                      ? Image.asset('assets/images/no_image.png')
+                      : Image.network(mushroom.img, fit: BoxFit.cover),
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      // Nom
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          mushroom.name,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 15,
                           ),
-                        ],
+                        ),
                       ),
-                    ),
-                    Expanded(
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.end,
+
+                      const SizedBox(height: 6),
+
+                      Row(
                         children: [
                           Text(mushroom.rate.toStringAsFixed(1)),
+                          const SizedBox(width: 4),
 
-                          Icon(
-                            (mushroom.rate as num) >= 0.09
-                                ? mushroom.rate > 0.5
-                                      ? Icons.star_rounded
-                                      : Icons.star_half_rounded
-                                : Icons.star_outline_rounded,
-                            color: Colors.deepOrange,
-                            size: 18,
-                          ),
-                          Icon(
-                            (mushroom.rate as num) >= 1.09
-                                ? mushroom.rate > 1.5
-                                      ? Icons.star_rounded
-                                      : Icons.star_half_rounded
-                                : Icons.star_outline_rounded,
-                            color: Colors.deepOrange,
-                            size: 18,
-                          ),
-                          Icon(
-                            (mushroom.rate as num) >= 2.09
-                                ? mushroom.rate > 2.5
-                                      ? Icons.star_rounded
-                                      : Icons.star_half_rounded
-                                : Icons.star_outline_rounded,
-                            color: Colors.deepOrange,
-                            size: 18,
-                          ),
-                          Icon(
-                            (mushroom.rate as num) >= 3.09
-                                ? mushroom.rate >= 3.5
-                                      ? Icons.star_rounded
-                                      : Icons.star_half_rounded
-                                : Icons.star_outline_rounded,
-                            color: Colors.deepOrange,
-                            size: 18,
-                          ),
-                          Icon(
-                            (mushroom.rate as num) >= 4.09
-                                ? mushroom.rate >= 4.5
-                                      ? Icons.star_rounded
-                                      : Icons.star_half_rounded
-                                : Icons.star_outline_rounded,
-                            color: Colors.deepOrange,
-                            size: 18,
-                          ),
-                          Text('(${mushroom.customersRate})'),
+                          ...List.generate(5, (i) {
+                            double threshold = i + 0.09;
+                            return Icon(
+                              mushroom.rate >= threshold
+                                  ? (mushroom.rate >= i + 0.5
+                                        ? Icons.star_rounded
+                                        : Icons.star_half_rounded)
+                                  : Icons.star_outline_rounded,
+                              color: Colors.deepOrange,
+                              size: 16,
+                            );
+                          }),
+
+                          const SizedBox(width: 4),
+                          Text("(${mushroom.customersRate})"),
                         ],
                       ),
-                    ),
-                    Expanded(
-                      child: Row(
+
+                      const SizedBox(height: 6),
+
+                      Row(
                         children: [
                           Text(mushroom.rate.toStringAsFixed(0)),
-                          Text('00+ bought in past month'),
+                          const SizedBox(width: 4),
+                          const Expanded(
+                            child: Text("00+ bought in past month"),
+                          ),
                         ],
                       ),
-                    ),
-                    SizedBox(height: 5),
-                    mushroom.choice
-                        ? Expanded(
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.all(4),
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFF6B3F69),
-                                    borderRadius: BorderRadius.circular(3),
-                                  ),
 
-                                  child: Text(
-                                    'Black friday deal',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                        : SizedBox(),
-                    Expanded(
-                      flex: 2,
-                      child: Row(
-                        children: [
-                          Text(
-                            '\$',
-                            style: TextStyle(fontWeight: FontWeight.w500),
+                      const SizedBox(height: 6),
+
+                      // Badge
+                      if (mushroom.choice)
+                        Container(
+                          padding: const EdgeInsets.all(4),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF6B3F69),
+                            borderRadius: BorderRadius.circular(3),
                           ),
+                          child: const Text(
+                            'Black friday deal',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+
+                      const SizedBox(height: 6),
+
+                      // Prix
+                      Row(
+                        children: [
+                          const Text('\$'),
                           Text(
                             mushroom.price.toStringAsFixed(2),
-                            style: TextStyle(
-                              fontSize: 24,
+                            style: const TextStyle(
+                              fontSize: 20,
                               fontWeight: FontWeight.w700,
                             ),
                           ),
                           Text(
-                            '(\$${mushroom.price.toStringAsFixed(2)}/kg)',
-                            style: TextStyle(
+                            ' (\$${mushroom.price.toStringAsFixed(2)}/kg)',
+                            style: const TextStyle(
                               fontWeight: FontWeight.w300,
                               fontSize: 13,
                             ),
                           ),
                         ],
                       ),
-                    ),
-                    Expanded(
-                      child: Row(
+
+                      const SizedBox(height: 6),
+
+                      Row(
                         children: [
-                          Text(
+                          const Text(
                             'Lowest: ',
                             style: TextStyle(
                               fontWeight: FontWeight.w300,
@@ -176,8 +152,8 @@ class ProductCard extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            '\$${((((mushroom.price as num?) ?? 0) * (1 + mushroom.discount / 100)).toStringAsFixed(1))}',
-                            style: TextStyle(
+                            '\$${(mushroom.price * (1 + mushroom.discount / 100)).toStringAsFixed(1)}',
+                            style: const TextStyle(
                               fontWeight: FontWeight.w300,
                               fontSize: 13,
                               decoration: TextDecoration.lineThrough,
@@ -185,24 +161,23 @@ class ProductCard extends StatelessWidget {
                           ),
                         ],
                       ),
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: AddToCartButton(
-                            onTap: () {
-                              context.read<CartViewModel>().add(mushroom);
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
+              ],
             ),
-          ],
-        ),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+            child: AddToCartButton(
+              onTap: () {
+                print("[DEBUG] Bouton Add → Ajout au panier");
+                context.read<CartViewModel>().add(mushroom);
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

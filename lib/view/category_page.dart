@@ -34,7 +34,7 @@ class CategoryPage extends StatelessWidget {
               Divider(thickness: 2),
               Expanded(
                 child: GridView.builder(
-                  padding: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(5),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 10,
@@ -44,14 +44,26 @@ class CategoryPage extends StatelessWidget {
                   itemCount: 2,
                   itemBuilder: (context, index) {
                     final List category = [
-                      {'name': 'Deadly', 'img': 'deadly_mushroom.png'},
-                      {'name': 'Toxic', 'img': 'toxic_mushroom.png'},
+                      {
+                        'name': 'Deadly',
+                        'category': 'deadly',
+                        'img': 'deadly_mushroom.png',
+                      },
+                      {
+                        'name': 'Poisonous',
+                        'category': 'poisonous',
+                        'img': 'toxic_mushroom.png',
+                      },
                     ];
 
                     return GestureDetector(
                       onTap: () => Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (_) => CategoryView()),
+                        MaterialPageRoute(
+                          builder: (_) => CategoryView(
+                            category: category[index]['category'],
+                          ),
+                        ),
                       ), //print('UwU from ${category[index]['name']}')
                       child: Container(
                         decoration: BoxDecoration(

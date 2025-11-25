@@ -35,4 +35,11 @@ class MushroomsViewModel extends ChangeNotifier {
     }
     notifyListeners();
   }
+
+  void category(String category) {
+    mushrooms = allMushrooms
+        .where((m) => m.type.toString().contains(category))
+        .toList();
+    notifyListeners();
+  }
 }

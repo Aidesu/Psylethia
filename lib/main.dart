@@ -33,13 +33,22 @@ class MyApp extends StatelessWidget {
       title: 'Psylethia',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.black,
+        ),
       ),
+
       initialRoute: '/main',
+
       routes: {
         '/main': (_) => const MainPage(),
         '/home': (_) => const HomePage(),
         '/category': (_) => const CategoryPage(),
-        '/category/view': (_) => const CategoryView(),
+        '/category/view': (context) {
+          final args = ModalRoute.of(context)!.settings.arguments as String;
+          return CategoryView(category: args);
+        },
         '/profile': (_) => const ProfilePage(),
         '/cart': (_) => const CartPage(),
       },

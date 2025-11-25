@@ -6,14 +6,17 @@ import '../viewmodel/mushroom_view_model.dart';
 import '../components/widgets/app_bar/bottom_bar.dart';
 
 class CategoryView extends StatelessWidget {
-  const CategoryView({super.key});
+  final String category;
+  const CategoryView({required this.category, super.key});
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) {
         final vm = MushroomsViewModel();
-        vm.fetchMushrooms();
+        vm.fetchMushrooms().then((_) {
+          vm.category(category);
+        });
         return vm;
       },
 
@@ -28,7 +31,7 @@ class CategoryView extends StatelessWidget {
         body: Consumer<MushroomsViewModel>(
           builder: (context, vm, _) {
             return GridView.builder(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(5),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2, // 2 en rangée
                 crossAxisSpacing: 10,
@@ -38,7 +41,6 @@ class CategoryView extends StatelessWidget {
               itemCount: vm.mushrooms.length,
               itemBuilder: (context, index) {
                 final m = vm.mushrooms[index];
-
                 return ProductCard(mushroom: m);
               },
             );

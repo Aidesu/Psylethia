@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AddToCartButton extends StatelessWidget {
-  final Function onTap;
+  final VoidCallback onTap;
   final Color foregroundColor;
   final Color backgroundColor;
 
@@ -23,8 +23,11 @@ class AddToCartButton extends StatelessWidget {
               backgroundColor: WidgetStateProperty.all(backgroundColor),
               foregroundColor: WidgetStateProperty.all(foregroundColor),
             ),
-            onPressed: () => onTap(),
-            child: Text('Add to basket'),
+            onPressed: () {
+              print('[DEBUG] AddToCartButton pressed');
+              onTap();
+            },
+            child: const Text('Add to basket'),
           ),
         ),
       ],

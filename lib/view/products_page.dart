@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:psylethia/viewmodel/cart_page_view_model.dart';
 import '../model/product_model.dart';
 import 'package:psylethia/components/widgets/app_bar/bottom_bar.dart';
 
@@ -31,11 +33,13 @@ class ProductsPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            mushroom.name,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
+                          Expanded(
+                            child: Text(
+                              mushroom.name,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
                             ),
                           ),
                         ],
@@ -140,7 +144,9 @@ class ProductsPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(25),
                     color: Colors.black,
                   ),
-                  child: Image.network(mushroom.img as String),
+                  child: mushroom.img == ''
+                      ? Image.asset('assets/images/no_image.png')
+                      : Image.network(mushroom.img as String),
                   width: double.infinity,
                 ),
                 Row(
@@ -233,7 +239,20 @@ class ProductsPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(25),
                         ),
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Provider.of<CartViewModel>(
+                              context,
+                              listen: false,
+                            ).add(mushroom);
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  "${mushroom.name} ajouté au panier",
+                                ),
+                              ),
+                            );
+                          },
+
                           child: Text(
                             'Add to Basket',
                             style: TextStyle(
@@ -275,7 +294,13 @@ class ProductsPage extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(child: Text('Shipper / Seller'), flex: 2),
+                    Expanded(
+                      child: Text(
+                        'Shipper / Seller',
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                      flex: 2,
+                    ),
                     Expanded(child: Text('Psylethia'), flex: 3),
                   ],
                 ),
@@ -283,7 +308,13 @@ class ProductsPage extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(child: Text('Returns'), flex: 2),
+                    Expanded(
+                      child: Text(
+                        'Returns',
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                      flex: 2,
+                    ),
                     Expanded(
                       child: Text(
                         'Return a product until 31 January 2026 or within 30 days from receip (wchichever is later)',
@@ -296,7 +327,13 @@ class ProductsPage extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(child: Text('Gift options'), flex: 2),
+                    Expanded(
+                      child: Text(
+                        'Gift options',
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                      flex: 2,
+                    ),
                     Expanded(child: Text('Available at checkout'), flex: 3),
                   ],
                 ),
@@ -304,7 +341,13 @@ class ProductsPage extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(child: Text('Payment'), flex: 2),
+                    Expanded(
+                      child: Text(
+                        'Payment',
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                      flex: 2,
+                    ),
                     Expanded(child: Text('Secure transaction'), flex: 3),
                   ],
                 ),
@@ -335,42 +378,72 @@ class ProductsPage extends StatelessWidget {
                 Divider(),
                 Row(
                   children: [
-                    Expanded(child: Text('name')),
+                    Expanded(
+                      child: Text(
+                        'Name',
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                    ),
                     Expanded(child: Text(mushroom.name)),
                   ],
                 ),
                 Divider(),
                 Row(
                   children: [
-                    Expanded(child: Text('Common name')),
+                    Expanded(
+                      child: Text(
+                        'Common name',
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                    ),
                     Expanded(child: Text(mushroom.commonname)),
                   ],
                 ),
                 Divider(),
                 Row(
                   children: [
-                    Expanded(child: Text('Type')),
+                    Expanded(
+                      child: Text(
+                        'Type',
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                    ),
                     Expanded(child: Text(mushroom.type)),
                   ],
                 ),
                 Divider(),
                 Row(
                   children: [
-                    Expanded(child: Text('agent')),
+                    Expanded(
+                      child: Text(
+                        'Agent',
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                    ),
                     Expanded(child: Text(mushroom.agent)),
                   ],
                 ),
                 Divider(),
                 Row(
                   children: [
-                    Expanded(child: Text('Distribution')),
+                    Expanded(
+                      child: Text(
+                        'Distribution',
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                    ),
                     Expanded(child: Text('Global')),
                   ],
                 ),
                 Divider(),
                 Row(
                   children: [
-                    Expanded(child: Text('Box Contents')),
+                    Expanded(
+                      child: Text(
+                        'Box Contents',
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                    ),
                     Expanded(child: Text('Specimen Vial Mushroom Class A')),
                   ],
                 ),
