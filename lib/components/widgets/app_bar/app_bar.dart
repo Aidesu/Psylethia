@@ -9,7 +9,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     required this.onSearch,
     this.foregroundColor = Colors.black,
-    this.backgroundColor = Colors.orangeAccent,
+    this.backgroundColor = const Color(0xFFA376A2),
   });
 
   @override
@@ -22,7 +22,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: TextField(
           onChanged: onSearch,
           decoration: InputDecoration(
-            hintText: 'Rechercher...',
+            hintText: 'Search Psylethia.com',
             contentPadding: const EdgeInsets.symmetric(horizontal: 10),
             filled:
                 true, // rend blanc l'input de recherche, sinon rend comme la couleur du fond

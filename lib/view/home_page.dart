@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:psylethia/widgets/product_card/mushroom_card.dart';
+import 'package:psylethia/components/widgets/card/product_card.dart';
 import '../viewmodel/mushroom_view_model.dart';
-import '../widgets/app_bar/app_bar.dart';
+import '../components/widgets/app_bar/app_bar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -29,10 +29,12 @@ class HomePage extends StatelessWidget {
               return const Center(child: CircularProgressIndicator());
             }
 
+            const SizedBox(height: 20);
+
             return GridView.builder(
               padding: const EdgeInsets.all(20),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, // 2 en rangée
+                crossAxisCount: 1, // 2 en rangée
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 10,
                 childAspectRatio: 0.80,
