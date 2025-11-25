@@ -3,12 +3,14 @@ import './big_card_product.dart';
 
 class BigCard1 extends StatelessWidget {
   final String text;
+  final double radius;
   final mushroom1;
   final mushroom2;
   final mushroom3;
   final mushroom4;
   const BigCard1({
     this.text = '',
+    this.radius = 5,
     required this.mushroom1,
     required this.mushroom2,
     required this.mushroom3,
@@ -22,7 +24,7 @@ class BigCard1 extends StatelessWidget {
       width: 350,
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
+        borderRadius: BorderRadius.circular(radius),
         color: const Color(0xFFA376A2),
       ),
       margin: EdgeInsets.all(5),

@@ -38,4 +38,17 @@ class MushroomsViewModel extends ChangeNotifier {
         .toList();
     notifyListeners();
   }
+
+  void filterName(String name) {
+    if (name.isEmpty) {
+      mushrooms = List.from(allMushrooms);
+    } else {
+      mushrooms = allMushrooms.where((m) => m.name.contains(name)).toList();
+      notifyListeners();
+    }
+  }
+
+  void filterPrice(double price) {
+    mushrooms = allMushrooms.where((m) => m.price <= price).toList();
+  }
 }
