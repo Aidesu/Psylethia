@@ -1,12 +1,11 @@
 import 'dart:math';
 
 class Mushroom {
-  // final int id;
+  int id;
   final String name;
   final String commonname;
   final double price;
   final String agent;
-  // final String distribution;
   final String img;
   final String type;
   final int stock;
@@ -14,37 +13,58 @@ class Mushroom {
   final int customersRate;
   final int discount;
   final bool choice;
+  int quantity;
 
   Mushroom({
-    // required this.id,
+    required this.id,
     required this.name,
     required this.commonname,
+    required this.price,
     required this.agent,
-    // required this.distribution,
     required this.img,
     required this.type,
-  }) : stock = Random().nextInt(100) + 50,
-       rate = 2 + Random().nextDouble() * (5 - 2),
-       customersRate = Random().nextInt(255),
-       price = 12.49 + Random().nextDouble() * (79.99 - 12.49),
-       choice = Random().nextBool(),
-       discount = Random().nextInt(25);
+    required this.stock,
+    required this.rate,
+    required this.customersRate,
+    required this.discount,
+    required this.choice,
+    this.quantity = 1,
+  });
+
+  Mushroom copy() {
+    return Mushroom(
+      id: id,
+      name: name,
+      commonname: commonname,
+      price: price,
+      agent: agent,
+      img: img,
+      type: type,
+      stock: stock,
+      rate: rate,
+      customersRate: customersRate,
+      discount: discount,
+      choice: choice,
+      quantity: quantity,
+    );
+  }
 
   factory Mushroom.fromJson(Map<String, dynamic> json) {
     return Mushroom(
-      // id: json['id'],
+      id: 0,
       name: json['name'],
       commonname: json['commonname'],
-      // price: (json['price'] as num).toDouble(),
       agent: json['agent'],
-      // distribution: json['distribution'],
       img: json['img'],
       type: json['type'],
-      // stock: ,
-      // rate: json['rate'],
-      // customersRate: json['customersRate'],
-      // discount: json['discount'],
-      // choice: json['choice'],
+      price: 12.49 + Random().nextDouble() * (79.99 - 12.49),
+      rate: 2 + Random().nextDouble() * 3,
+      customersRate: Random().nextInt(255),
+      stock: Random().nextInt(100) + 50,
+      discount: Random().nextInt(25),
+      choice: Random().nextBool(),
+
+      quantity: json['quantity'] != null ? json['quantity'] as int : 1,
     );
   }
 }

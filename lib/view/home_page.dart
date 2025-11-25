@@ -29,6 +29,8 @@ class HomePage extends StatelessWidget {
               return const Center(child: CircularProgressIndicator());
             }
 
+            const SizedBox(height: 20);
+
             return GridView.builder(
               padding: const EdgeInsets.all(20),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

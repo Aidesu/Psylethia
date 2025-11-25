@@ -16,13 +16,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   int index = 0;
 
-  final pages = const [
-    HomePage(),
-    ProfilePage(),
-    CartPage(),
-    CategoryPage(),
-    CategoryView(),
-  ];
+  final pages = const [HomePage(), ProfilePage(), CartPage(), CategoryPage()];
 
   @override
   Widget build(BuildContext context) {

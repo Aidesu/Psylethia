@@ -12,26 +12,27 @@ class MyBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      currentIndex: currentIndex,
-      onTap: onTap,
-      backgroundColor: Colors.white,
-      type: BottomNavigationBarType.fixed,
-      items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home_outlined),
-          label: "Accueil",
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person_3_outlined),
-          label: "Profil",
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.shopping_cart_outlined),
-          label: "Panier",
-        ),
-        BottomNavigationBarItem(icon: Icon(Icons.menu), label: "Catégories"),
-      ],
+    return SizedBox(
+      height: 100,
+      child: BottomNavigationBar(
+        currentIndex: currentIndex,
+        onTap: onTap,
+        backgroundColor: Colors.white,
+        type: BottomNavigationBarType.fixed,
+        iconSize: 30,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: ""),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_3_outlined),
+            label: "",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart_outlined),
+            label: "",
+          ),
+          BottomNavigationBarItem(icon: Icon(Icons.menu), label: ""),
+        ],
+      ),
     );
   }
 }
