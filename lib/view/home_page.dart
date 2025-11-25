@@ -9,46 +9,39 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) {
-        final vm = MushroomsViewModel();
-        vm.fetchMushrooms();
-        return vm;
-      },
+    return Scaffold(
+      appBar: const MyAppBar(),
 
-      child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(kToolbarHeight),
-          child: Consumer<MushroomsViewModel>(
-            builder: (context, vm, _) => MyAppBar(onSearch: vm.filter),
-          ),
-        ),
-        body: Consumer<MushroomsViewModel>(
-          builder: (context, vm, _) {
-            if (vm.allMushrooms.isEmpty) {
-              return const Center(child: CircularProgressIndicator());
-            }
+      body: Consumer<MushroomsViewModel>(
+        builder: (context, vm, _) {
+          if (vm.isLoading) {
+            return const Center(child: CircularProgressIndicator());
+          }
 
-            const SizedBox(height: 20);
-
-            return GridView.builder(
-              padding: const EdgeInsets.all(20),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 1, // 2 en rangée
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                childAspectRatio: 0.80,
+          if (vm.mushrooms.isEmpty) {
+            return const Center(
+              child: Text(
+                "Aucun produit trouvé",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
               ),
-              itemCount: vm.mushrooms.length,
-              itemBuilder: (context, index) {
-                final m = vm.mushrooms[index];
-
-                // Appel de la carte des mushrooms
-                return ProductCard(mushroom: m);
-              },
             );
-          },
-        ),
+          }
+
+          return GridView.builder(
+            padding: const EdgeInsets.all(20),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 1,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              childAspectRatio: 0.80,
+            ),
+            itemCount: vm.mushrooms.length,
+            itemBuilder: (context, index) {
+              final m = vm.mushrooms[index];
+              return ProductCard(mushroom: m);
+            },
+          );
+        },
       ),
     );
   }

@@ -5,6 +5,7 @@ import '../model/product_model.dart';
 class MushroomsViewModel extends ChangeNotifier {
   List<Mushroom> mushrooms = [];
   List<Mushroom> allMushrooms = [];
+  bool isLoading = true;
 
   Future<void> fetchMushrooms() async {
     final data = await ApiMushrooms.fetchMushrooms();
@@ -18,6 +19,7 @@ class MushroomsViewModel extends ChangeNotifier {
     }).toList();
 
     mushrooms = List.from(allMushrooms);
+    isLoading = false;
     notifyListeners();
   }
 

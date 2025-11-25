@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:psylethia/components/widgets/app_bar/app_bar.dart';
-import 'package:psylethia/viewmodel/mushroom_view_model.dart';
 import '../viewmodel/cart_page_view_model.dart';
 import '../components/widgets/card/cart_card.dart';
 
@@ -13,11 +12,9 @@ class CartPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
 
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight),
-        child: Consumer<MushroomsViewModel>(
-          builder: (context, vm, _) => MyAppBar(onSearch: vm.filter),
-        ),
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(kToolbarHeight),
+        child: MyAppBar(),
       ),
 
       body: Consumer<CartViewModel>(
