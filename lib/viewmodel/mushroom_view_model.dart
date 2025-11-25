@@ -10,11 +10,7 @@ class MushroomsViewModel extends ChangeNotifier {
   Future<void> fetchMushrooms() async {
     final data = await ApiMushrooms.fetchMushrooms();
 
-    int generatedId = 1;
-
     allMushrooms = data.map((m) {
-      // chaque champignon reçoit un id unique
-      m.id = generatedId++;
       return m;
     }).toList();
 

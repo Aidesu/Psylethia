@@ -33,7 +33,7 @@ class Mushroom {
 
   Mushroom copy() {
     return Mushroom(
-      id: Random().nextInt(99999999),
+      id: id,
       name: name,
       commonname: commonname,
       price: price,
@@ -49,10 +49,14 @@ class Mushroom {
     );
   }
 
+  static int generateId(String name) => name.hashCode;
+
   factory Mushroom.fromJson(Map<String, dynamic> json) {
+    final String name = json['name'];
+
     return Mushroom(
-      id: json['id'] ?? 0,
-      name: json['name'],
+      id: generateId(name),
+      name: name,
       commonname: json['commonname'],
       agent: json['agent'],
       img: json['img'],
@@ -65,7 +69,7 @@ class Mushroom {
       discount: Random().nextInt(25),
       choice: Random().nextBool(),
 
-      quantity: json['quantity'] ?? 1,
+      quantity: 1,
     );
   }
 }

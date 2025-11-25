@@ -48,7 +48,6 @@ class ProductCard extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     children: [
-                      // Nom
                       Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
@@ -99,7 +98,6 @@ class ProductCard extends StatelessWidget {
 
                       const SizedBox(height: 6),
 
-                      // Badge
                       if (mushroom.choice)
                         Container(
                           padding: const EdgeInsets.all(4),
@@ -119,7 +117,6 @@ class ProductCard extends StatelessWidget {
 
                       const SizedBox(height: 6),
 
-                      // Prix
                       Row(
                         children: [
                           const Text('\$'),

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+import 'package:http/http.dart' as cart;
 import 'package:provider/provider.dart';
 import 'package:psylethia/components/widgets/app_bar/app_bar.dart';
 import '../viewmodel/cart_page_view_model.dart';
 import '../components/widgets/card/cart_card.dart';
+import '../components/widgets/card/save_for_later.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -24,7 +27,6 @@ class CartPage extends StatelessWidget {
             child: ListView(
               children: [
                 _buildSummaryCard(cart),
-
                 const SizedBox(height: 10),
 
                 ...cart.items.map(
@@ -36,8 +38,33 @@ class CartPage extends StatelessWidget {
 
                 if (cart.items.isNotEmpty) ...[
                   const SizedBox(height: 10),
-
                   _buildReturnInfo(),
+                ],
+
+                if (cart.saved.isNotEmpty) ...[
+                  const SizedBox(height: 20),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 10),
+                    child: Text(
+                      "Saved for later",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+
+                  ...cart.saved.map(
+                    (item) => Padding(
+                      padding: const EdgeInsets.only(bottom: 8),
+                      child: SaveForLaterCard(
+                        item: item,
+                        onMoveToCart: () => cart.moveToCart(item),
+                        onDelete: () => cart.removeFromSaved(item),
+                      ),
+                    ),
+                  ),
                 ],
               ],
             ),
