@@ -5,6 +5,7 @@ import '../../../viewmodel/cart_page_view_model.dart';
 
 class CartCard extends StatelessWidget {
   final Mushroom item;
+
   const CartCard({required this.item, super.key});
 
   @override
@@ -170,7 +171,8 @@ class CartCard extends StatelessWidget {
             const SizedBox(width: 8),
             _textButton("Delete", () => cart.remove(item)),
             const SizedBox(width: 8),
-            _textButton("Save for later"),
+
+            _textButton("Save for later", () => cart.saveForLater(item)),
           ],
         ),
 
