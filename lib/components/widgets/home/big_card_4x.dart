@@ -3,11 +3,13 @@ import 'package:psylethia/components/widgets/home/big_card_product.dart';
 import '../../../model/product_model.dart';
 
 class BigCard4x extends StatelessWidget {
+  final String text;
   final Mushroom mushroom_1;
   final Mushroom mushroom_2;
   final Mushroom mushroom_3;
   final Mushroom mushroom_4;
   const BigCard4x({
+    required this.text,
     required this.mushroom_1,
     required this.mushroom_2,
     required this.mushroom_3,
@@ -32,7 +34,7 @@ class BigCard4x extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  "Don't miss these deals",
+                  text,
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
