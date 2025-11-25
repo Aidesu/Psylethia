@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:psylethia/components/widgets/home/Big_card_1.dart';
 import 'package:psylethia/components/widgets/home/big_card_product.dart';
-
 import 'package:psylethia/components/widgets/home/small_card.dart';
 import '../viewmodel/mushroom_view_model.dart';
 import '../components/widgets/app_bar/app_bar.dart';
@@ -12,18 +11,15 @@ import '../components/widgets/home/big_card_4x.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const MyAppBar(),
-
       body: Consumer<MushroomsViewModel>(
         builder: (context, vm, _) {
           if (vm.isLoading) {
             return const Center(child: CircularProgressIndicator());
           }
-
           if (vm.mushrooms.isEmpty) {
             return const Center(
               child: Text(
@@ -32,7 +28,6 @@ class HomePage extends StatelessWidget {
               ),
             );
           }
-
           return SingleChildScrollView(
             child: Column(
               children: [
@@ -126,7 +121,6 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
-
                 Row(
                   children: [
                     Expanded(
@@ -158,9 +152,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ],
                 ),
-
                 const SizedBox(height: 10),
-
                 Container(
                   margin: const EdgeInsets.fromLTRB(5, 5, 5, 0),
                   child: Column(

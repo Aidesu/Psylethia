@@ -3,8 +3,10 @@ import '../model/product_model.dart';
 
 class CartViewModel extends ChangeNotifier {
   final List<Mushroom> _items = [];
+  final List<Mushroom> _saved = [];
 
   List<Mushroom> get items => _items;
+  List<Mushroom> get saved => _saved;
 
   void add(Mushroom m) {
     final copy = m.copy();
@@ -17,7 +19,6 @@ class CartViewModel extends ChangeNotifier {
     } else {
       _items.add(copy);
     }
-
     notifyListeners();
   }
 
@@ -41,7 +42,6 @@ class CartViewModel extends ChangeNotifier {
 
   void decreaseQuantity(Mushroom m) {
     final index = _items.indexWhere((item) => item.id == m.id);
-
     if (index != -1) {
       if (_items[index].quantity > 1) {
         _items[index].quantity--;
@@ -52,19 +52,27 @@ class CartViewModel extends ChangeNotifier {
     }
   }
 
-  int get totalItems {
-    int total = 0;
-    for (var item in _items) {
-      total += item.quantity;
-    }
-    return total;
+  void saveForLater(Mushroom m) {
+    remove(m);
+    final savedCopy = m.copy();
+    savedCopy.quantity = 1;
+    _saved.add(savedCopy);
+    notifyListeners();
   }
 
-  double get totalPrice {
-    double total = 0;
-    for (var item in _items) {
-      total += item.price * item.quantity;
-    }
-    return total;
+  void removeFromSaved(Mushroom m) {
+    _saved.removeWhere((item) => item.id == m.id);
+    notifyListeners();
   }
+
+  void moveToCart(Mushroom m) {
+    _saved.removeWhere((item) => item.id == m.id);
+    add(m);
+    notifyListeners();
+  }
+
+  int get totalItems => _items.fold(0, (sum, item) => sum + item.quantity);
+
+  double get totalPrice =>
+      _items.fold(0, (sum, item) => sum + item.price * item.quantity);
 }
