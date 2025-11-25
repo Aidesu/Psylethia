@@ -149,7 +149,12 @@ class CartPage extends StatelessWidget {
             ),
           ),
 
-          Icon(Icons.inventory_2_outlined, size: 36, color: Colors.brown),
+          Image.network(
+            "https://m.media-amazon.com/images/G/08/x-locale/checkout/returns-box._CB453980378_.png",
+            width: 50,
+            height: 50,
+            fit: BoxFit.contain,
+          ),
         ],
       ),
     );
