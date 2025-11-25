@@ -168,7 +168,7 @@ class CartCard extends StatelessWidget {
             ),
 
             const SizedBox(width: 8),
-            _textButton("Delete"),
+            _textButton("Delete", () => cart.remove(item)),
             const SizedBox(width: 8),
             _textButton("Save for later"),
           ],
@@ -196,9 +196,9 @@ class CartCard extends StatelessWidget {
     );
   }
 
-  Widget _textButton(String text) {
+  Widget _textButton(String text, [VoidCallback? onTap]) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
         decoration: BoxDecoration(
