@@ -20,6 +20,7 @@ class ProductCard extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
+          color: Colors.white,
           border: Border.all(
             width: 1,
             color: const Color.fromARGB(31, 29, 29, 29),
@@ -28,7 +29,12 @@ class ProductCard extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Expanded(flex: 11, child: Image.network(mushroom.img)),
+            Expanded(
+              flex: 11,
+              child: mushroom.img == ""
+                  ? Image.asset('assets/images/no_image.png')
+                  : Image.network(mushroom.img, fit: BoxFit.cover),
+            ),
             Expanded(
               flex: 9,
               child: Container(
@@ -64,7 +70,7 @@ class ProductCard extends StatelessWidget {
                                       : Icons.star_half_rounded
                                 : Icons.star_outline_rounded,
                             color: Colors.deepOrange,
-                            size: 18,
+                            size: 16,
                           ),
                           Icon(
                             (mushroom.rate as num) >= 1.09
@@ -73,7 +79,7 @@ class ProductCard extends StatelessWidget {
                                       : Icons.star_half_rounded
                                 : Icons.star_outline_rounded,
                             color: Colors.deepOrange,
-                            size: 18,
+                            size: 16,
                           ),
                           Icon(
                             (mushroom.rate as num) >= 2.09
@@ -82,7 +88,7 @@ class ProductCard extends StatelessWidget {
                                       : Icons.star_half_rounded
                                 : Icons.star_outline_rounded,
                             color: Colors.deepOrange,
-                            size: 18,
+                            size: 16,
                           ),
                           Icon(
                             (mushroom.rate as num) >= 3.09
@@ -91,7 +97,7 @@ class ProductCard extends StatelessWidget {
                                       : Icons.star_half_rounded
                                 : Icons.star_outline_rounded,
                             color: Colors.deepOrange,
-                            size: 18,
+                            size: 16,
                           ),
                           Icon(
                             (mushroom.rate as num) >= 4.09
@@ -100,7 +106,7 @@ class ProductCard extends StatelessWidget {
                                       : Icons.star_half_rounded
                                 : Icons.star_outline_rounded,
                             color: Colors.deepOrange,
-                            size: 18,
+                            size: 16,
                           ),
                           Text('(${mushroom.customersRate})'),
                         ],
@@ -117,6 +123,7 @@ class ProductCard extends StatelessWidget {
                     SizedBox(height: 5),
                     mushroom.choice
                         ? Expanded(
+                            flex: 2,
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
