@@ -40,7 +40,6 @@ class MyApp extends StatelessWidget {
           '/main': (_) => const MainPage(),
           '/home': (_) => const HomePage(),
           '/category': (_) => const CategoryPage(),
-          '/category/view': (_) => const CategoryView(),
           '/profile': (_) => const ProfilePage(),
           '/cart': (_) => const CartPage(),
         },
